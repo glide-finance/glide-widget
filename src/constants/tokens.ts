@@ -345,6 +345,10 @@ function isMatic(chainId: number): chainId is SupportedChainId.POLYGON | Support
   return chainId === SupportedChainId.POLYGON_MUMBAI || chainId === SupportedChainId.POLYGON
 }
 
+function isElastos(chainId: number): chainId is SupportedChainId.ELASTOS | SupportedChainId.ELASTOS {
+  return chainId === SupportedChainId.ELASTOS || chainId === SupportedChainId.ELASTOS
+}
+
 class MaticNativeCurrency extends NativeCurrency {
   equals(other: Currency): boolean {
     return other.isNative && other.chainId === this.chainId
@@ -360,6 +364,24 @@ class MaticNativeCurrency extends NativeCurrency {
   public constructor(chainId: number) {
     if (!isMatic(chainId)) throw new Error('Not matic')
     super(chainId, 18, 'MATIC', 'Polygon Matic')
+  }
+}
+
+class ElastosNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId
+  }
+
+  get wrapped(): Token {
+    if (!isElastos(this.chainId)) throw new Error('Not elastos')
+    const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
+    invariant(wrapped instanceof Token)
+    return wrapped
+  }
+
+  public constructor(chainId: number) {
+    if (!isElastos(chainId)) throw new Error('Not elastos')
+    super(chainId, 18, 'ELA', 'Elastos')
   }
 }
 
@@ -382,7 +404,9 @@ export function nativeOnChain(chainId: number): NativeCurrency {
   return (
     cachedNativeCurrency[chainId] ??
     (cachedNativeCurrency[chainId] = isMatic(chainId)
-      ? new MaticNativeCurrency(chainId)
+      ? new MaticNativeCurrency(chainId) 
+      : isElastos(chainId) 
+      ? new ElastosNativeCurrency(chainId) 
       : ExtendedEther.onChain(chainId))
   )
 }
