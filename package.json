@@ -1,6 +1,6 @@
 {
   "name": "@glide-finance/widgets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Glide Swap Widget",
   "repository": "https://github.com/glide-finance/glide-widgets",
   "files": [
@@ -58,6 +58,7 @@
     "@babel/runtime": "^7.17.0",
     "@fontsource/ibm-plex-mono": "^4.5.1",
     "@fontsource/inter": "^4.5.1",
+    "@glide-finance/sdk": "^1.1.5",
     "@popperjs/core": "^2.4.4",
     "@reduxjs/toolkit": "^1.6.1",
     "@uniswap/redux-multicall": "^1.1.1",
