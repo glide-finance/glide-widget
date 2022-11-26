@@ -22,6 +22,7 @@ import {
   USDC_MAINNET,
   USDC_OPTIMISM,
   USDC_POLYGON,
+  USDC_ELASTOS,
   USDT,
   USDT_ARBITRUM_ONE,
   USDT_OPTIMISM,
@@ -77,6 +78,10 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     USDC_POLYGON,
     USDT_POLYGON,
     WETH_POLYGON,
+  ],
+  [SupportedChainId.ELASTOS]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ELASTOS],
+    USDC_ELASTOS,
   ],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {

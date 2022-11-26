@@ -81,6 +81,13 @@ export const USDC_POLYGON_MUMBAI = new Token(
   'USDC',
   'USD//C'
 )
+export const USDC_ELASTOS = new Token(
+  SupportedChainId.ELASTOS,
+  '0xA06be0F5950781cE28D965E5EFc6996e88a8C141',
+  6,
+  'USDC',
+  'USD//C'
+)
 
 export const AMPL = new Token(
   SupportedChainId.MAINNET,
@@ -122,6 +129,7 @@ export const USDC: { [chainId in SupportedChainId]: Token } = {
   [SupportedChainId.RINKEBY]: USDC_RINKEBY,
   [SupportedChainId.KOVAN]: USDC_KOVAN,
   [SupportedChainId.ROPSTEN]: USDC_ROPSTEN,
+  [SupportedChainId.ELASTOS]: USDC_ELASTOS,
 }
 export const DAI_POLYGON = new Token(
   SupportedChainId.POLYGON,
@@ -264,6 +272,14 @@ export const WETH_POLYGON = new Token(
   'WETH',
   'Wrapped Ether'
 )
+export const WETH_ELASTOS = new Token(
+  SupportedChainId.ELASTOS,
+  '0x802c3e839E4fDb10aF583E3E759239ec7703501e',
+  18,
+  'ETH',
+  'ETH on Elastos'
+)
+
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
@@ -315,6 +331,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     18,
     'WMATIC',
     'Wrapped MATIC'
+  ),
+  [SupportedChainId.ELASTOS]: new Token(
+    SupportedChainId.ELASTOS,
+    '0x517E9e5d46C1EA8aB6f78677d6114Ef47F71f6c4',
+    18,
+    'WELA',
+    'Wrapped Elastos'
   ),
 }
 
@@ -377,5 +400,6 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     [SupportedChainId.RINKEBY]: USDC_RINKEBY.address,
     [SupportedChainId.KOVAN]: USDC_KOVAN.address,
     [SupportedChainId.ROPSTEN]: USDC_ROPSTEN.address,
+    [SupportedChainId.ELASTOS]: USDC_ELASTOS.address,
   },
 }
